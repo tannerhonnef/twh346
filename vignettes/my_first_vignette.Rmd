@@ -1,0 +1,31 @@
+---
+title: "Overview of the twh346 Package"
+author: "Tanner Honnef"
+date: "2024-01-30"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{my_first_vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+`twh346` is the package that I am developing for the coursework component of
+GEOG 246-346 (Geospatial Analysis with R).
+
+It currently has one function, `my_number_checker`, which is executed as follows:
+
+```{r}
+library(twh346)
+my_number_checker(1)
+my_number_checker(7)
+my_number_checker(20)
+```
+
+I will be adding others, and updating this vignette as we go.
