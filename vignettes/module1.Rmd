@@ -1,10 +1,10 @@
 ---
-title: "Overview of the twh346 Package"
+title: "Assignment 1 Geospaar"
 author: "Tanner Honnef"
 date: "2024-01-30"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{my_first_vignette}
+  %\VignetteIndexEntry{module1}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -34,6 +34,15 @@ library(twh346)
 my_multiplier(1)
 my_multiplier(7)
 my_multiplier(20)
+```
+
+Another new function I have added is `my_calc`:
+```{r}
+library(twh346)
+my_calc(5, 7, "sum")
+my_calc(10, 2, "divide")
+my_calc(2, 5, "multiply")
+my_calc(7, 5, "subtract")
 ```
 
 I will be adding others, and updating this vignette as we go.
