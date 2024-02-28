@@ -1,0 +1,118 @@
+---
+title: "module3"
+author: "Tanner Honnef"
+date: "2024-02-27"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{module 3}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r cars}
+library(twh346)
+set.seed(1)
+v1 <- sample(0:100, 20, replace = TRUE)
+v1
+v2 <- sample(1:10, 20, replace = TRUE)
+v2
+v3 <- runif(20, 0, 1)
+v3
+v4 <- LETTERS[v2] 
+v4
+
+m1 <- cbind(v1, v2)
+m1
+m2 <- cbind(v2, v3)
+m2
+m3 <- cbind(v3, v4)
+m3
+
+DF <- data.frame(v1, v2, v3, v4)
+DF
+# Question: df should not be used to name the object because it is a function 
+# in R
+colnames(DF) <- c("a", "b", "c", "grp")
+DF
+#Question: It is okay to name a column c because it is not the name of a matrix
+# and is only the name of a column.  C is a built in function in R
+str(DF)
+# to create a factor from the character type in this you could use the line of
+# code: DF$grp <- as.factor(DF$grp)
+# change to factor
+DF$grp <- as.factor(DF$grp)
+DF$grp <- as.character(DF$grp)
+
+s1 <- my_calc(v1, v2, "sum")
+s1
+
+d1 <- my_calc(v1, v2, "divide")
+d1
+
+s2 <- my_calc(v2, v3, "sum")
+s2
+
+d2 <- (my_calc(v2, v3, "divide"))
+d2
+
+s3 <- my_calc(v1, v3, "sum")
+s3
+
+d3 <- my_calc(v1, v3, "divide")
+d3
+
+s4 <- my_calc(m1, m1, "sum")
+s4
+
+d4 <- my_calc(m1, m1, "divide")
+d4
+
+s5 <- my_calc(m1, m2, "sum")
+s5
+
+d5 <- my_calc(m1, m2, "divide")
+d5
+
+
+my_calc(DF$a[1], DF$b[1], "multiply")
+# Multiply rows 1-10, column 1-3 by rows1-10, columns 1-3
+my_calc(DF[1:10, c("a", "b", "c")], DF[1:10, c("a", "b", "c")], "multiply") 
+# Divide the values in columns “a” and “b” by the values in column “c” of DF 
+#corresponding to the rows in “grp” that have values “E”. In selecting the 
+# columns, use their names, rather than their index numbers, to select them
+# used chat gpt to help with for loop syntax in R on this
+my_calc(x = DF[c("a", "b")], y = DF$c[DF$grp == "E"], fun = "divide")
+DF[c("a", "b")] / DF$c[DF$grp == "E"]
+
+# Repeat the last of the aforementioned calculations, but this time do not use
+# my_calc. Simply do it using the two DF subsets with the / operator
+for (x in 1:length(DF$grp)){
+  if(DF$grp[x] == "E") {
+    DF$a[x] / DF$c[x]
+    DF$b[x] / DF$c[x]
+  } 
+}
+
+# Combine v1, m1, and m2 into a list l using *apply
+l <- list(v1, m1, m2)
+l
+# Write an lapply that applies sum to l. This one does not need an anonymous 
+#function
+lapply(l, sum)
+
+# Now write an lapply that iterates over the elements of l, and uses your 
+# my_calc to multiply each element of l by v2
+lapply(l, function(x) {
+  my_calc(x, v2, "multiply")
+})
+
+# do the same but with sapply
+sapply(l, function(x) {
+  my_calc(x, v2, "multiply")
+})
+```
+
