@@ -47,6 +47,7 @@ str(DF)
 DF$grp <- as.factor(DF$grp)
 DF$grp <- as.character(DF$grp)
 
+
 s1 <- my_calc(v1, v2, "sum")
 s1
 
