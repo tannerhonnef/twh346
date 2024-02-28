@@ -11,16 +11,16 @@
 #' my_calc(10:15, 1:5, "divide")
 #'  my_calc(2, 5, "multiply")
 my_calc <- function(x, y, fun) {
-if(fun == "sum") {
-  o <- x + y
-} else if(fun == "subtract") {
-  o <- x - y
-} else if(fun == "divide") {
-  o <- x / y
-} else if(fun == "multiply") {
-  o <- x * y
-} else {
-  o <- paste("Not a recognized function")
-}
-return(o)
+  if(fun == "sum") {
+    o <- x + y
+  } else if(fun == "subtract") {
+    o <- x - y
+  } else if(fun == "divide") {
+    o <- x / y
+  } else if(fun == "multiply") {
+    o <- x * y
+  } else {
+    o <- paste("Not a recognized function")
+  }
+  return(o)
 }
