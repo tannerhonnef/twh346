@@ -10,7 +10,7 @@ vignette: >
 ---
 
 
-```{r}
+```{r, warning = FALSE, message = FALSE}
 library(tidyverse)
 library(dplyr)
 library(tidyr)
@@ -52,7 +52,7 @@ farmers_alb
 
 ```
 
-```{r, fig.width=6, fig.height=4, fig.align='center'}
+```{r, fig.width=6, fig.height=4, fig.align='center', warning = FALSE, message = FALSE}
 # Create a plot using sf::plot that shows all three datasets on one map, with
 # districts_alb in grey, with roads in red over that, and farmers_alb as a blue
 # cross over that. 
@@ -68,7 +68,7 @@ plot(roads %>% st_geometry(), col = "red", add = TRUE)
 plot(farmers_alb %>% st_geometry(), col = "blue", pch = "+", add = TRUE)
 ```
 
-```{r, fig.width=5, fig.height=6, fig.align='center'}
+```{r, fig.width=5, fig.height=6, fig.align='center', warning = FALSE, message = FALSE}
 # Make the same plot above using ggplot and geom_sf. 
 
 # When adding farmers_alb to the plot, use pch = "+" and size = 3 as arguments 
@@ -87,7 +87,7 @@ ggplot(districts_alb, fill = "grey") + geom_sf() +
 ```
 
 
-```{r, fig.width=6, fig.height=4, fig.align='center'}
+```{r, fig.width=6, fig.height=4, fig.align='center', warning = FALSE, message = FALSE}
 # Select from districts_alb the district representing the 50th percentile area, 
 # i.e. the median area, and save that district into a new object median_dist. 
 
@@ -115,7 +115,7 @@ plot(median_dist %>% st_geometry(), col = "khaki", add = TRUE)
 title("The median area district")
 ```
 
-```{r, fig.width=6, fig.height=4, fig.align='center'}
+```{r, fig.width=6, fig.height=4, fig.align='center', warning = FALSE, message = FALSE}
 # Convert the median_dist to its centroid point. Call it median_distp. 
 
 # filter the farmers_alb data for season 1, and then find the 20 closest season
@@ -151,7 +151,7 @@ plot(farmers_alb1 %>% st_geometry(), col = "blue", add = TRUE)
 plot(closest_20farmers %>% st_geometry(), col = "red", add = TRUE)
 ```
 
-```{r, fig.width=6, fig.height=4, fig.align='center'}
+```{r, fig.width=6, fig.height=4, fig.align='center', warning = FALSE, message = FALSE}
 # Create a rectangular sf polygon called mypol using the x coordinates 30 and 
 # 31 (minimum and maximum) and y coordinates -10 and -11. 
 
@@ -190,7 +190,7 @@ I used chatGpt to format this so it was not in scientific notation.
 ### The area of mypol is `r format(mypol_area, scientific = FALSE)` hectares.
 
 
-```{r, fig.width=6, fig.height=4, fig.align='center'}
+```{r, fig.width=6, fig.height=4, fig.align='center', warning = FALSE, message = FALSE}
 #Create mypol_dist_int from the intersection of mypol and districts_alb, 
 # recasting the intersected districts to multipolygons, and adding an area 
 # variable onto it that reports areas of intersections in hectares. 
@@ -223,7 +223,7 @@ mypol_mean
 ### The median of mypol is `r mypol_median`.
 ### The meam of mypol is `r mypol_mean`.
 
-```{r, fig.width=6, fig.height=4, fig.align='center'}
+```{r, fig.width=6, fig.height=4, fig.align='center', warning = FALSE, message = FALSE}
 # Find the shortest and longest roads in Zambia, and place the selected roads 
 # into a new object (roads_extreme). 
 
@@ -255,7 +255,7 @@ plot(roads_extreme_buff %>% st_geometry(), col = "blue", add = TRUE)
 plot(roads_extreme %>% st_geometry(), col = 'red', lwd = 3, add = TRUE)
 ```
 
-```{r, fig.width=6, fig.height=4, fig.align='center'}
+```{r, fig.width=6, fig.height=4, fig.align='center', warning = FALSE, message = FALSE}
 # Select a random sample of 10 points in the smallest object in 
 # roads_extreme_buff, and one of 50 in the largest object. 
 
@@ -281,7 +281,7 @@ plot(roads_extreme_buff_sample %>%
 ```
 
 
-```{r, fig.width=6, fig.height=4, fig.align='center'}
+```{r, fig.width=6, fig.height=4, fig.align='center', warning = FALSE, message = FALSE}
 # Your final task is to intersect roads with the buffer of the longest road in
 # roads_extreme_buff (roads_int). 
 
