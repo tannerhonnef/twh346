@@ -75,7 +75,6 @@ crop_ylds <- crop_ylds %>%
   mutate(country = ifelse(country == "South Africa", "ZAF", country)) %>%  
   mutate(country = ifelse(country == "Zambia", "ZMB", country)) %>% 
   mutate(crop = tolower(crop))
-set.seed(1)
 crop_ylds
 
 # Use dplyr verbs to select the 5 top-ranked years for total harvested area for 
@@ -140,7 +139,8 @@ crop_ylds %>% filter(crop == "maize") %>%
 # y axis as “Yield (t/ha)”. Remove the x-axis label. Give a title: “South 
 # African wheat (1961-2017)”. Chunk 54 is your guide.
 zaf_wheat <- crop_ylds %>% filter(crop == "wheat" & country == "ZAF")
-yl <- range(crop_ylds[crop_ylds$crop == "wheat", "yield"])
+yl <- range(crop_ylds[crop_ylds$crop == "wheat" & 
+                        crop_ylds$country == "ZAF", "yield"])
 plot(yield ~ year, data = zaf_wheat, pch = 16, col = "grey", 
      ylim = yl, main = "South African wheat (1961-2017)", xlab = "", 
      ylab = "Yield (t/ha)")
@@ -150,7 +150,7 @@ abline(lm(yield ~ year, data = zaf_wheat), col = "blue")
 # should be “Yield (t/ha)”, the title should be “Zambian Maize”, and bins 
 # should be blue with black outlines.
 crop_ylds %>% 
-  filter(crop == "maize") %>%
+  filter(crop == "maize" & country == "ZMB") %>%
   ggplot() + 
   geom_histogram(aes(x = yield), bins = 5, position = "dodge", 
                  fill = "blue", color = "black") +
