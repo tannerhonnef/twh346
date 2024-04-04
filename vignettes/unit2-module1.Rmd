@@ -32,7 +32,7 @@ library(sf)
 fnmR <- system.file("extdata/roads.geojson", package = "geospaar")
 fnmR
 
-roads <- st_read(dsn = fnmR)
+roads <- st_read(dsn = fnmR) 
 roads
 
 fnm <- system.file("extdata/districts.geojson", package = "geospaar")
