@@ -1,7 +1,7 @@
 Package: twh346
 Type: Package
 Title: Geospaar Assignments
-Version: 0.1.2
+Version: 0.1.3
 Author: Tanner Honnef
 Maintainer: Tanner Honnef <thonnef@clarku.edu>
 Description: Package for GEOG246-346 class assignments

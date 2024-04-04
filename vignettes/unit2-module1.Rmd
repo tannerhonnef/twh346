@@ -298,7 +298,9 @@ roads_int
 
 par(mar = c(0, 0, 0, 0))
 plot(districts_alb %>% st_geometry(), col = "grey")
-plot(roads_extreme_buff %>% st_geometry(), col = "blue", add = TRUE)
+plot(roads_extreme_buff %>% 
+       filter(length == max(length)) %>% 
+       st_geometry(), col = "blue", add = TRUE)
 plot(roads_int %>% st_geometry(), col = 'red', lwd = 3, add = TRUE)
 
 distance_km <- sum(st_length(roads_int)) %>% 
