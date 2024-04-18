@@ -69,7 +69,7 @@ s2poly <- as.polygons(x = s2_1gt35) %>% st_as_sf()
 s2poly
 
 plot_noaxes(s2_1d)
-plot(s2poly, add = TRUE, col = "black")
+plot(s2poly %>% st_geometry(), add = TRUE)
 ```
 
 ## Part 3
@@ -120,7 +120,7 @@ dist_to_farmers <- distance(x = zamr, y = farmerspts) %>%
   mask(., districts)
 dist_to_farmers
 
-plot_noaxes(dist_to_farmers / 1000)
+plot_noaxes(dist_to_farmers / 100, plg = list(title = "km"))
 plot(farmerspts, pch = 20, col = "black", add = TRUE)
 ```
 
